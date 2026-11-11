@@ -1,0 +1,48 @@
+# =========================================================
+#  Seguridad del servidor · Peces artesanales Jordan Nito
+#  Para alojamientos con Apache (la mayoría de hostings en España:
+#  Hostinger, Raiola, Dinahosting, SiteGround, IONOS...).
+#  Sube este archivo junto a index.html.
+# =========================================================
+
+# Sin listados de carpetas
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) Forzar HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # 2) Web estática: solo se aceptan lecturas. Cualquier POST, PUT, DELETE...
+  #    (falsos envíos, ataques automatizados) recibe "405 Método no permitido".
+  RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|OPTIONS)$
+  RewriteRule ^ - [R=405,L]
+
+  # 3) Bloquear archivos y carpetas ocultos (.git, .claude, .env...) salvo .well-known (certificados SSL)
+  RewriteRule (^|/)\.(?!well-known/) - [F,L]
+
+  # 4) Bloquear copias de seguridad, configuraciones y archivos de trabajo
+  RewriteRule \.(bak|old|orig|sql|log|ini|env|py|sh|md|json|lock|zip|tar|gz)$ - [F,L,NC]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Política de contenido: solo código de este dominio y tipografías de Google
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; frame-ancestors 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests"
+  # Nadie puede meter la web dentro de otra página (clickjacking)
+  Header always set X-Frame-Options "DENY"
+  # El navegador no "adivina" tipos de archivo
+  Header always set X-Content-Type-Options "nosniff"
+  # No se filtra la URL completa a otras webs
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  # Se desactivan permisos que la tienda no necesita
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=()"
+  # Aísla la ventana de otras webs abiertas desde ella
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+  # HTTPS obligatorio durante 1 año (actívalo solo cuando el SSL funcione bien)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header unset X-Powered-By
+</IfModule>

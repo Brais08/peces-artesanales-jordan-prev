@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Seguridad: solo se ejecuta código de este dominio; nada de scripts en línea ni de terceros -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Jordan Nito · Jibioneras artesanales para calamar, chipirón y sepia</title>
+  <meta name="description" content="Jibioneras artesanales para calamar, chipirón y sepia, talladas y pintadas a mano en tallas de 5,5 a 11 cm. Peces artesanales Jordan Nito.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="spatial.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A1A2F'/%3E%3Cpath d='M10 32c8-12 30-14 44-6-4 4-4 8 0 12-14 8-36 6-44-6z' fill='%23FFC21A'/%3E%3Ccircle cx='44' cy='30' r='3' fill='%230A1A2F'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- Indicador de profundidad -->
+  <aside class="depth" aria-hidden="true">
+    <span class="depth__top">0 m</span>
+    <div class="depth__track"><div class="depth__marker"><span class="depth__value">0 m</span></div></div>
+    <span class="depth__bottom">120 m</span>
+  </aside>
+
+  <!-- Cabecera -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a href="#inicio" class="brand" aria-label="Jordan Nito, inicio">
+        <svg class="brand__icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 20C14 6 40 4 56 14c-5 4-5 8 0 12C40 36 14 34 4 20Z" fill="currentColor"/><circle cx="46" cy="18" r="3" fill="var(--abyss)"/></svg>
+        <span class="brand__text"><strong>Jordan Nito</strong><small>Peces artesanales</small></span>
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#coleccion">Colección</a>
+        <a href="#taller">El taller</a>
+        <a href="#medida">A medida</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="cart-btn" id="cartOpen" aria-label="Abrir carrito">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20.5" r="1.4" fill="currentColor"/><circle cx="17" cy="20.5" r="1.4" fill="currentColor"/></svg>
+          <span class="cart-btn__count" id="cartCount">0</span>
+        </button>
+        <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO · Escaparate espacial -->
+    <section class="sp" id="inicio" aria-label="Escaparate interactivo de jibioneras">
+      <div class="sp__sea" aria-hidden="true">
+        <div class="sp__caustics"></div>
+        <svg class="sp__floor" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice">
+          <g fill="#06111F" opacity=".75">
+            <path class="sway" d="M120 320c-6-60 18-110 6-170-8-40 10-70 4-110 14 40 0 70 8 110 12 60-10 110-4 170z"/>
+            <path class="sway sway--b" d="M168 320c4-50-14-90-4-140 8-36-6-60 0-96 10 34 16 62 8 98-10 50 10 90 6 138z"/>
+            <path class="sway" d="M1290 320c-4-70 20-120 8-180-6-34 12-64 6-100 14 36 2 66 8 100 12 62-10 112-6 180z"/>
+            <path class="sway sway--b" d="M1336 320c6-56-12-96-2-150 6-30-4-52 2-84 10 30 14 56 6 86-10 54 10 94 6 148z"/>
+            <path d="M0 320V250c80-30 170-40 260-20 70 16 120 50 200 46 120-6 200-60 330-56 120 4 190 46 300 40 130-8 210-60 350-50v110z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="hero__bubbles" id="bubbles" aria-hidden="true"></div>
+      <div class="sp__ghost" aria-hidden="true"><span>P</span><span>E</span><span>Z</span></div>
+
+      <div class="sp__tag">
+        <p class="sp__eyebrow"><span class="sp__live"></span> Tallados a mano · series limitadas</p>
+        <h1>Hechos a mano.<br><em>Nacidos para engañar.</em></h1>
+      </div>
+
+      <nav class="sp__tabs glass" aria-label="Especie">
+        <span class="sp__pill" aria-hidden="true"></span>
+        <button class="sp__tab" data-cat="calamar">Calamar</button>
+        <button class="sp__tab" data-cat="chipiron">Chipirón</button>
+        <button class="sp__tab" data-cat="sepia">Sepia</button>
+        <a class="sp__tab sp__tab--link" href="#medida">A medida</a>
+      </nav>
+
+      <div class="sp__rail glass">
+        <a href="#coleccion" class="is-active" data-tip="Colección" aria-label="Ver la colección">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 12c2.6-4 9.5-5.4 15-2.6l3.4-2.2c.4-.3 1 0 .9.5l-.7 4.3.7 4.3c.1.5-.5.8-.9.5l-3.4-2.2C11.5 17.4 4.6 16 2 12Zm12.4-1.3a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>
+        </a>
+        <button type="button" data-tip="Carrito" aria-label="Abrir carrito" data-open-cart>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20.5" r="1.4" fill="currentColor"/><circle cx="17" cy="20.5" r="1.4" fill="currentColor"/></svg>
+        </button>
+        <a href="#medida" data-tip="Diseña el tuyo" aria-label="Diseñar un pez a medida">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m14.5 4.5 5 5L10 19l-5.5.5L5 14l9.5-9.5ZM12.5 6.5l5 5"/></svg>
+        </a>
+        <a href="https://wa.me/34683673381" target="_blank" rel="noopener noreferrer" data-tip="WhatsApp" aria-label="Escribir por WhatsApp">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+        </a>
+      </div>
+
+      <div class="sp__stage" id="spStage"><div class="sp__arc" id="spArc"></div></div>
+
+      <div class="sp__model" aria-hidden="true">
+        <div class="sp__halo"></div>
+        <div class="sp__swim">
+          <div class="sp__fig" id="mCur"></div>
+          <div class="sp__fig" id="mNext"></div>
+          <div class="sp__grid"></div>
+          <div class="sp__scan"></div>
+        </div>
+      </div>
+
+      <div class="sp__spec sp__spec--a glass"><small>Hundimiento</small><span id="spNado">—</span></div>
+      <div class="sp__spec sp__spec--b glass"><small>Serie</small><span id="spSerie">—</span></div>
+
+      <button type="button" class="sp__arrow sp__arrow--prev glass" id="spPrev" aria-label="Señuelo anterior">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="sp__arrow sp__arrow--next glass" id="spNext" aria-label="Señuelo siguiente">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="sp__buy glass">
+        <div class="sp__thumb"><div id="bThumb"></div></div>
+        <div class="sp__info">
+          <div class="ln sp__name" id="bName"></div>
+          <div class="ln sp__price" id="bPrice"></div>
+        </div>
+        <div class="sp__opt">
+          <span class="sp__lbl">Tamaño (cm)</span>
+          <div class="sp__sizes" id="bSizes"></div>
+        </div>
+        <div class="sp__opt sp__colors">
+          <div class="ln sp__lbl" id="bColor"></div>
+          <div class="sp__dots" id="bDots"></div>
+        </div>
+        <button type="button" class="sp__add" id="bAdd">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+          Añadir
+        </button>
+      </div>
+
+      <div class="sp__cur" id="spCursor" aria-hidden="true">
+        <span class="sp__ring"></span><span class="sp__cdot"></span>
+        <b class="t-try">ELEGIR</b><b class="t-drag">ARRASTRA</b>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Jibioneras artesanales</span><i>✦</i><span>Calamar · chipirón · sepia</span><i>✦</i><span>Tallas de 5,5 a 11 cm</span><i>✦</i><span>Coronas de acero inoxidable</span><i>✦</i><span>Envío 24/48 h</span><i>✦</i><span>Piezas únicas numeradas</span><i>✦</i>
+        <span>Jibioneras artesanales</span><i>✦</i><span>Calamar · chipirón · sepia</span><i>✦</i><span>Tallas de 5,5 a 11 cm</span><i>✦</i><span>Coronas de acero inoxidable</span><i>✦</i><span>Envío 24/48 h</span><i>✦</i><span>Piezas únicas numeradas</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- COLECCIÓN -->
+    <section class="section section--paper" id="coleccion">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <p class="kicker">01 — Colección</p>
+            <h2>Elige tu presa</h2>
+          </div>
+          <p class="section__intro">Jibioneras para calamar, chipirón y sepia. Todos los modelos en tallas de 5,5, 6, 7, 8, 9, 10 y 11 cm.</p>
+        </div>
+
+        <div class="filters reveal" role="tablist" aria-label="Filtrar por especie">
+          <button class="chip is-active" data-filter="todos">Todos</button>
+          <button class="chip" data-filter="calamar">Calamar</button>
+          <button class="chip" data-filter="chipiron">Chipirón</button>
+          <button class="chip" data-filter="sepia">Sepia</button>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <!-- TALLER -->
+    <section class="section section--deep" id="taller">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <p class="kicker kicker--yellow">02 — El taller</p>
+            <h2>De un bloque de madera<br>a la jibionera perfecta.</h2>
+          </div>
+          <p class="section__intro">Cada pieza pasa por cuatro fases y más de 20 horas de trabajo. Así se hace una jibionera que cae y trabaja como una presa de verdad.</p>
+        </div>
+        <ol class="process">
+          <li class="process__step reveal">
+            <span class="process__num">01</span>
+            <h3>Tallado</h3>
+            <p>Elegimos la madera por densidad y tallamos cada cuerpo a mano hasta la silueta de una gamba.</p>
+            <span class="process__meta">± 3 h / pieza</span>
+          </li>
+          <li class="process__step reveal">
+            <span class="process__num">02</span>
+            <h3>Lastrado</h3>
+            <p>Calibramos el plomo al gramo para que caiga a 45° y con el hundimiento justo en cada talla.</p>
+            <span class="process__meta">tolerancia 0,2 g</span>
+          </li>
+          <li class="process__step reveal">
+            <span class="process__num">03</span>
+            <h3>Pintado y forrado</h3>
+            <p>Aerógrafo, forro de tela y detalles a pincel. Montamos la corona de acero inoxidable a mano.</p>
+            <span class="process__meta">hasta 9 capas</span>
+          </li>
+          <li class="process__step reveal">
+            <span class="process__num">04</span>
+            <h3>Prueba en agua</h3>
+            <p>Ninguna jibionera sale del taller sin probarse: comprobamos la caída, el equilibrio y la respuesta al tirón.</p>
+            <span class="process__meta">100% testadas</span>
+          </li>
+        </ol>
+
+        <div class="quote reveal">
+          <p>“No vendo jibioneras. Vendo el tirón que llega cuando todo lo demás ha fallado.”</p>
+          <span>— Jordan Nito, fundador y artesano</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- A MEDIDA -->
+    <section class="section section--sand" id="medida">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <p class="kicker">03 — A medida</p>
+            <h2>Diseña tu jibionera</h2>
+          </div>
+          <p class="section__intro">Elige especie, talla, colores y patrón. La tallamos para ti y grabamos tu nombre en el costado.</p>
+        </div>
+
+        <div class="builder reveal">
+          <div class="builder__preview">
+            <div class="builder__water">
+              <div class="builder__lure" id="builderLure"></div>
+            </div>
+            <div class="builder__summary">
+              <div>
+                <span class="label">Tu jibionera</span>
+                <strong id="builderName">Para calamar · 9 cm</strong>
+              </div>
+              <div class="builder__price" id="builderPrice">29,90 €</div>
+            </div>
+          </div>
+
+          <form class="builder__form" id="builderForm" novalidate>
+            <fieldset>
+              <legend>Especie</legend>
+              <div class="seg" data-key="shape">
+                <button type="button" data-value="calamar" class="is-active">Calamar</button>
+                <button type="button" data-value="chipiron">Chipirón</button>
+                <button type="button" data-value="sepia">Sepia</button>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Color del lomo</legend>
+              <div class="swatches" data-key="back"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Color del cuerpo</legend>
+              <div class="swatches" data-key="body"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Patrón</legend>
+              <div class="seg" data-key="pattern">
+                <button type="button" data-value="scales" class="is-active">Escamas</button>
+                <button type="button" data-value="stripes">Rayas</button>
+                <button type="button" data-value="dots">Moteado</button>
+                <button type="button" data-value="none">Liso</button>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Talla</legend>
+              <div class="seg" data-key="size">
+                <button type="button" data-value="0">5,5</button>
+                <button type="button" data-value="1">6</button>
+                <button type="button" data-value="2">7</button>
+                <button type="button" data-value="3">8</button>
+                <button type="button" data-value="4" class="is-active">9</button>
+                <button type="button" data-value="5">10</button>
+                <button type="button" data-value="6">11 cm</button>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Grabado <small>(+3 €)</small></legend>
+              <input type="text" id="engrave" maxlength="16" placeholder="Ej.: Para papá" autocomplete="off" spellcheck="false">
+            </fieldset>
+            <button type="button" class="btn btn--navy btn--block" id="builderAdd">Añadir mi jibionera al carrito</button>
+            <p class="builder__note">Fabricación en 10–14 días. Te enviamos fotos del proceso.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIONES -->
+    <section class="section section--paper" id="opiniones">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <p class="kicker">04 — Desde el agua</p>
+            <h2>Lo que dicen los que pescan</h2>
+          </div>
+        </div>
+        <div class="reviews">
+          <figure class="review reveal">
+            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <blockquote>La Jibionera Rías del 9 cae perfecta. Seis calamares en una noche desde el espigón.</blockquote>
+            <figcaption><span class="avatar">MR</span><span><strong>Marcos R.</strong>Pesca desde costa · Galicia</span></figcaption>
+          </figure>
+          <figure class="review review--accent reveal">
+            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <blockquote>Pedí uno a medida para regalar a mi padre con su nombre grabado. La pieza es una obra de arte.</blockquote>
+            <figcaption><span class="avatar">LC</span><span><strong>Lucía C.</strong>Cliente a medida</span></figcaption>
+          </figure>
+          <figure class="review reveal">
+            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <blockquote>Las Chipi del 5,5 son una pasada para chipirón en el puerto. Acabados impecables y la corona no se oxida.</blockquote>
+            <figcaption><span class="avatar">JP</span><span><strong>Javier P.</strong>Pesca desde puerto</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="contacto">
+    <div class="container footer__grid">
+      <div>
+        <a href="#top" class="brand brand--light">
+          <svg class="brand__icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 20C14 6 40 4 56 14c-5 4-5 8 0 12C40 36 14 34 4 20Z" fill="currentColor"/><circle cx="46" cy="18" r="3" fill="var(--ink)"/></svg>
+          <span class="brand__text"><strong>Jordan Nito</strong><small>Peces artesanales</small></span>
+        </a>
+        <p class="footer__claim">Jibioneras talladas y pintadas a mano, una a una.</p>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <a href="#coleccion">Calamar</a><a href="#coleccion">Chipirón</a><a href="#coleccion">Sepia</a><a href="#medida">A medida</a>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <a href="#">Envíos y devoluciones</a><a href="#">Garantía</a><a href="#">Preguntas frecuentes</a><a href="https://wa.me/34683673381" target="_blank" rel="noopener noreferrer">Contacto por WhatsApp</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Aviso legal</a><a href="#">Privacidad</a><a href="#">Cookies</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year"></span> Peces artesanales Jordan Nito</span>
+      <span class="mono">Hecho a mano · Probado en el agua</span>
+    </div>
+  </footer>
+
+  <!-- Carrito -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Carrito" aria-hidden="true">
+    <div class="drawer__head">
+      <h3>Tu carrito</h3>
+      <button class="icon-btn" id="cartClose" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="drawer__body" id="cartItems"></div>
+    <div class="drawer__foot">
+      <div class="ship" id="shipMsg"></div>
+      <div class="drawer__total"><span>Total</span><strong id="cartTotal">0,00 €</strong></div>
+      <form class="order-form" id="orderForm" novalidate>
+        <input type="text" id="orderName" placeholder="Tu nombre *" autocomplete="name" maxlength="60" required>
+        <input type="text" id="orderCity" placeholder="Localidad / provincia" autocomplete="address-level2" maxlength="60">
+        <textarea id="orderNotes" rows="2" placeholder="Notas del pedido (opcional)" maxlength="300"></textarea>
+        <!-- Campo trampa contra robots: invisible para las personas -->
+        <div class="hp" aria-hidden="true"><label for="orderWebsite">No rellenar</label><input type="text" id="orderWebsite" tabindex="-1" autocomplete="off"></div>
+        <button class="btn btn--whatsapp btn--block" id="checkout" type="submit">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+          Enviar pedido por WhatsApp
+        </button>
+        <p class="order-form__note">Se abrirá WhatsApp con tu pedido listo para enviar. Te confirmaremos disponibilidad, envío y forma de pago.</p>
+      </form>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+  <script src="spatial.js"></script>
+</body>
+</html>
