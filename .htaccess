@@ -8,6 +8,9 @@
 # Sin listados de carpetas
 Options -Indexes
 
+# Tipo correcto para el modelo 3D
+AddType model/gltf-binary .glb
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 

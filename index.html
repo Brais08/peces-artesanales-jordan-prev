@@ -6,13 +6,14 @@
   <!-- Seguridad: solo se ejecuta código de este dominio; nada de scripts en línea ni de terceros -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Jordan Nito · Jibioneras artesanales para calamar, chipirón y sepia</title>
-  <meta name="description" content="Jibioneras artesanales para calamar, chipirón y sepia, talladas y pintadas a mano en tallas de 5,5 a 11 cm. Peces artesanales Jordan Nito.">
+  <title>Jordan Nito · Poteras artesanales para calamar, chipirón y sepia</title>
+  <meta name="description" content="Poteras artesanales para calamar, chipirón y sepia, hechas a mano una a una en poliuretano, en tallas de 5,5 a 11 cm. Poteras artesanales Jordan Nito.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="spatial.css">
+  <link rel="stylesheet" href="visor3d.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A1A2F'/%3E%3Cpath d='M10 32c8-12 30-14 44-6-4 4-4 8 0 12-14 8-36 6-44-6z' fill='%23FFC21A'/%3E%3Ccircle cx='44' cy='30' r='3' fill='%230A1A2F'/%3E%3C/svg%3E">
 </head>
 <body>
@@ -29,7 +30,7 @@
     <div class="nav__inner">
       <a href="#inicio" class="brand" aria-label="Jordan Nito, inicio">
         <svg class="brand__icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 20C14 6 40 4 56 14c-5 4-5 8 0 12C40 36 14 34 4 20Z" fill="currentColor"/><circle cx="46" cy="18" r="3" fill="var(--abyss)"/></svg>
-        <span class="brand__text"><strong>Jordan Nito</strong><small>Peces artesanales</small></span>
+        <span class="brand__text"><strong>Jordan Nito</strong><small>Poteras artesanales</small></span>
       </a>
       <nav class="nav__links" id="navLinks">
         <a href="#coleccion">Colección</a>
@@ -50,7 +51,7 @@
 
   <main>
     <!-- HERO · Escaparate espacial -->
-    <section class="sp" id="inicio" aria-label="Escaparate interactivo de jibioneras">
+    <section class="sp" id="inicio" aria-label="Escaparate interactivo de poteras">
       <div class="sp__sea" aria-hidden="true">
         <div class="sp__caustics"></div>
         <svg class="sp__floor" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice">
@@ -64,11 +65,11 @@
         </svg>
       </div>
       <div class="hero__bubbles" id="bubbles" aria-hidden="true"></div>
-      <div class="sp__ghost" aria-hidden="true"><span>P</span><span>E</span><span>Z</span></div>
+      <div class="sp__ghost" aria-hidden="true"><span>P</span><span>O</span><span>T</span><span>A</span></div>
 
       <div class="sp__tag">
-        <p class="sp__eyebrow"><span class="sp__live"></span> Tallados a mano · series limitadas</p>
-        <h1>Hechos a mano.<br><em>Nacidos para engañar.</em></h1>
+        <p class="sp__eyebrow"><span class="sp__live"></span> Hechas a mano, una a una</p>
+        <h1>Hechas a mano.<br><em>Nacidas para engañar.</em></h1>
       </div>
 
       <nav class="sp__tabs glass" aria-label="Especie">
@@ -86,7 +87,7 @@
         <button type="button" data-tip="Carrito" aria-label="Abrir carrito" data-open-cart>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20.5" r="1.4" fill="currentColor"/><circle cx="17" cy="20.5" r="1.4" fill="currentColor"/></svg>
         </button>
-        <a href="#medida" data-tip="Diseña el tuyo" aria-label="Diseñar un pez a medida">
+        <a href="#medida" data-tip="Diseña el tuyo" aria-label="Diseñar una potera a medida">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m14.5 4.5 5 5L10 19l-5.5.5L5 14l9.5-9.5ZM12.5 6.5l5 5"/></svg>
         </a>
         <a href="https://wa.me/34683673381" target="_blank" rel="noopener noreferrer" data-tip="WhatsApp" aria-label="Escribir por WhatsApp">
@@ -109,10 +110,10 @@
       <div class="sp__spec sp__spec--a glass"><small>Hundimiento</small><span id="spNado">—</span></div>
       <div class="sp__spec sp__spec--b glass"><small>Serie</small><span id="spSerie">—</span></div>
 
-      <button type="button" class="sp__arrow sp__arrow--prev glass" id="spPrev" aria-label="Señuelo anterior">
+      <button type="button" class="sp__arrow sp__arrow--prev glass" id="spPrev" aria-label="Potera anterior">
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <button type="button" class="sp__arrow sp__arrow--next glass" id="spNext" aria-label="Señuelo siguiente">
+      <button type="button" class="sp__arrow sp__arrow--next glass" id="spNext" aria-label="Potera siguiente">
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
 
@@ -145,8 +146,8 @@
     <!-- Marquee -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
-        <span>Jibioneras artesanales</span><i>✦</i><span>Calamar · chipirón · sepia</span><i>✦</i><span>Tallas de 5,5 a 11 cm</span><i>✦</i><span>Coronas de acero inoxidable</span><i>✦</i><span>Envío 24/48 h</span><i>✦</i><span>Piezas únicas numeradas</span><i>✦</i>
-        <span>Jibioneras artesanales</span><i>✦</i><span>Calamar · chipirón · sepia</span><i>✦</i><span>Tallas de 5,5 a 11 cm</span><i>✦</i><span>Coronas de acero inoxidable</span><i>✦</i><span>Envío 24/48 h</span><i>✦</i><span>Piezas únicas numeradas</span><i>✦</i>
+        <span>Poteras hechas a mano</span><i>✦</i><span>Calamar · chipirón · sepia</span><i>✦</i><span>Cuerpo de poliuretano</span><i>✦</i><span>Tallas de 5,5 a 11 cm</span><i>✦</i><span>Coronas de acero inoxidable</span><i>✦</i><span>Envío 24/48 h</span><i>✦</i><span>Piezas únicas numeradas</span><i>✦</i>
+        <span>Poteras hechas a mano</span><i>✦</i><span>Calamar · chipirón · sepia</span><i>✦</i><span>Cuerpo de poliuretano</span><i>✦</i><span>Tallas de 5,5 a 11 cm</span><i>✦</i><span>Coronas de acero inoxidable</span><i>✦</i><span>Envío 24/48 h</span><i>✦</i><span>Piezas únicas numeradas</span><i>✦</i>
       </div>
     </div>
 
@@ -158,7 +159,7 @@
             <p class="kicker">01 — Colección</p>
             <h2>Elige tu presa</h2>
           </div>
-          <p class="section__intro">Jibioneras para calamar, chipirón y sepia. Todos los modelos en tallas de 5,5, 6, 7, 8, 9, 10 y 11 cm.</p>
+          <p class="section__intro">Poteras para calamar, chipirón y sepia. Todos los modelos en tallas de 5,5, 6, 7, 8, 9, 10 y 11 cm.</p>
         </div>
 
         <div class="filters reveal" role="tablist" aria-label="Filtrar por especie">
@@ -178,39 +179,52 @@
         <div class="section__head reveal">
           <div>
             <p class="kicker kicker--yellow">02 — El taller</p>
-            <h2>De un bloque de madera<br>a la jibionera perfecta.</h2>
+            <h2>De un bloque de poliuretano<br>a la potera perfecta.</h2>
           </div>
-          <p class="section__intro">Cada pieza pasa por cuatro fases y más de 20 horas de trabajo. Así se hace una jibionera que cae y trabaja como una presa de verdad.</p>
+          <p class="section__intro">Cada pieza pasa por cuatro fases y más de 20 horas de trabajo. Así se hace una potera que cae y trabaja como una presa de verdad.</p>
         </div>
-        <ol class="process">
-          <li class="process__step reveal">
-            <span class="process__num">01</span>
-            <h3>Tallado</h3>
-            <p>Elegimos la madera por densidad y tallamos cada cuerpo a mano hasta la silueta de una gamba.</p>
-            <span class="process__meta">± 3 h / pieza</span>
-          </li>
-          <li class="process__step reveal">
-            <span class="process__num">02</span>
-            <h3>Lastrado</h3>
-            <p>Calibramos el plomo al gramo para que caiga a 45° y con el hundimiento justo en cada talla.</p>
-            <span class="process__meta">tolerancia 0,2 g</span>
-          </li>
-          <li class="process__step reveal">
-            <span class="process__num">03</span>
-            <h3>Pintado y forrado</h3>
-            <p>Aerógrafo, forro de tela y detalles a pincel. Montamos la corona de acero inoxidable a mano.</p>
-            <span class="process__meta">hasta 9 capas</span>
-          </li>
-          <li class="process__step reveal">
-            <span class="process__num">04</span>
-            <h3>Prueba en agua</h3>
-            <p>Ninguna jibionera sale del taller sin probarse: comprobamos la caída, el equilibrio y la respuesta al tirón.</p>
-            <span class="process__meta">100% testadas</span>
-          </li>
-        </ol>
+        <!-- RECORRIDO 3D (prueba): para quitarlo, restaura la lista .process y borra visor3d.*, vendor/ y assets/ -->
+        <div class="story" id="visor3d">
+          <div class="story__sticky">
+            <div class="story__stage" id="viewerStage">
+              <div class="story__label" aria-hidden="true"><b id="storyNum">01</b> / 04 · <span id="storyName">Modelado</span></div>
+              <div class="viewer__loading" id="viewerLoading"><span class="viewer__spin"></span>Cargando la potera en 3D…</div>
+              <div class="story__bubbles" aria-hidden="true"></div>
+              <span class="viewer__hint">Arrastra para girarla</span>
+              <div class="viewer__colors" id="viewerColors"></div>
+            </div>
+          </div>
+          <ol class="story__steps">
+            <li class="story__step is-active" data-step="0">
+              <span class="process__num">01</span>
+              <h3>Modelado</h3>
+              <p>Damos forma a mano a cada cuerpo de poliuretano, uno a uno, hasta la silueta de una gamba.</p>
+              <span class="process__meta">± 3 h / pieza</span>
+            </li>
+            <li class="story__step" data-step="1">
+              <span class="process__num">02</span>
+              <h3>Lastrado</h3>
+              <p>Calibramos el plomo al gramo para que caiga a 45° y con el hundimiento justo en cada talla.</p>
+              <span class="process__meta">tolerancia 0,2 g</span>
+            </li>
+            <li class="story__step" data-step="2">
+              <span class="process__num">03</span>
+              <h3>Pintado</h3>
+              <p>Aerógrafo, detalles a pincel y barniz protector. Montamos la corona de acero inoxidable a mano.</p>
+              <span class="process__meta">hasta 9 capas</span>
+            </li>
+            <li class="story__step" data-step="3">
+              <span class="process__num">04</span>
+              <h3>Prueba en agua</h3>
+              <p>Ninguna potera sale del taller sin probarse: comprobamos la caída, el equilibrio y la respuesta al tirón.</p>
+              <span class="process__meta">100% testadas</span>
+              <p class="story__end">Ya es tuya: <b>gírala</b> y prueba colores.</p>
+            </li>
+          </ol>
+        </div>
 
         <div class="quote reveal">
-          <p>“No vendo jibioneras. Vendo el tirón que llega cuando todo lo demás ha fallado.”</p>
+          <p>“No vendo poteras. Vendo el tirón que llega cuando todo lo demás ha fallado.”</p>
           <span>— Jordan Nito, fundador y artesano</span>
         </div>
       </div>
@@ -222,9 +236,9 @@
         <div class="section__head reveal">
           <div>
             <p class="kicker">03 — A medida</p>
-            <h2>Diseña tu jibionera</h2>
+            <h2>Diseña tu potera</h2>
           </div>
-          <p class="section__intro">Elige especie, talla, colores y patrón. La tallamos para ti y grabamos tu nombre en el costado.</p>
+          <p class="section__intro">Elige especie, talla, colores y patrón. La hacemos a mano para ti y grabamos tu nombre en el costado.</p>
         </div>
 
         <div class="builder reveal">
@@ -234,7 +248,7 @@
             </div>
             <div class="builder__summary">
               <div>
-                <span class="label">Tu jibionera</span>
+                <span class="label">Tu potera</span>
                 <strong id="builderName">Para calamar · 9 cm</strong>
               </div>
               <div class="builder__price" id="builderPrice">29,90 €</div>
@@ -283,7 +297,7 @@
               <legend>Grabado <small>(+3 €)</small></legend>
               <input type="text" id="engrave" maxlength="16" placeholder="Ej.: Para papá" autocomplete="off" spellcheck="false">
             </fieldset>
-            <button type="button" class="btn btn--navy btn--block" id="builderAdd">Añadir mi jibionera al carrito</button>
+            <button type="button" class="btn btn--navy btn--block" id="builderAdd">Añadir mi potera al carrito</button>
             <p class="builder__note">Fabricación en 10–14 días. Te enviamos fotos del proceso.</p>
           </form>
         </div>
@@ -302,7 +316,7 @@
         <div class="reviews">
           <figure class="review reveal">
             <div class="stars" aria-label="5 de 5">★★★★★</div>
-            <blockquote>La Jibionera Rías del 9 cae perfecta. Seis calamares en una noche desde el espigón.</blockquote>
+            <blockquote>La Potera Rías del 9 cae perfecta. Seis calamares en una noche desde el espigón.</blockquote>
             <figcaption><span class="avatar">MR</span><span><strong>Marcos R.</strong>Pesca desde costa · Galicia</span></figcaption>
           </figure>
           <figure class="review review--accent reveal">
@@ -326,9 +340,9 @@
       <div>
         <a href="#top" class="brand brand--light">
           <svg class="brand__icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 20C14 6 40 4 56 14c-5 4-5 8 0 12C40 36 14 34 4 20Z" fill="currentColor"/><circle cx="46" cy="18" r="3" fill="var(--ink)"/></svg>
-          <span class="brand__text"><strong>Jordan Nito</strong><small>Peces artesanales</small></span>
+          <span class="brand__text"><strong>Jordan Nito</strong><small>Poteras artesanales</small></span>
         </a>
-        <p class="footer__claim">Jibioneras talladas y pintadas a mano, una a una.</p>
+        <p class="footer__claim">Poteras de poliuretano hechas y pintadas a mano, una a una.</p>
       </div>
       <div>
         <h4>Tienda</h4>
@@ -344,8 +358,8 @@
       </div>
     </div>
     <div class="container footer__bottom">
-      <span>© <span id="year"></span> Peces artesanales Jordan Nito</span>
-      <span class="mono">Hecho a mano · Probado en el agua</span>
+      <span>© <span id="year"></span> Poteras artesanales Jordan Nito</span>
+      <span class="mono">Hechas a mano · Probadas en el agua</span>
     </div>
   </footer>
 
@@ -379,5 +393,6 @@
 
   <script src="script.js"></script>
   <script src="spatial.js"></script>
+  <script src="visor3d-init.js"></script>
 </body>
 </html>

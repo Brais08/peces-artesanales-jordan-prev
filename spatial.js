@@ -1,4 +1,4 @@
-/* Escaparate espacial · Peces artesanales Jordan Nito
+/* Escaparate espacial · Poteras artesanales Jordan Nito
    Arco 3D de tarjetas de cristal, escaneo sonar y tarjeta de compra. */
 (() => {
   'use strict';

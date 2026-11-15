@@ -1,4 +1,4 @@
-/* Peces artesanales Jordan Nito — interacción de la tienda */
+/* Poteras artesanales Jordan Nito — interacción de la tienda */
 (() => {
   'use strict';
 
@@ -8,9 +8,9 @@
   let uid = 0;
 
   /* ------------------------------------------------------------
-     Generador SVG de señuelos (todas las ilustraciones son código)
+     Generador SVG de poteras (todas las ilustraciones son código)
      ------------------------------------------------------------ */
-  /* Jibioneras: clásica para calamar, estilizada para chipirón y robusta para sepia */
+  /* Poteras: clásica para calamar, estilizada para chipirón y robusta para sepia */
   const SHAPES = {
     calamar: {
       body: 'M44,54 C62,40 140,33 198,38 C214,40 223,47 225,54 C223,61 214,67 198,69 C140,74 62,68 44,58 Z',
@@ -26,7 +26,7 @@
     }
   };
 
-  // Corona de púas de acero (el "paraguas" característico de las jibioneras)
+  // Corona de púas de acero (el "paraguas" característico de las poteras)
   function crown(x, y) {
     let back = '', front = '';
     for (let i = -5; i <= 5; i++) {
@@ -74,7 +74,7 @@
     const finBot = `M${f},${mir(t + 5)} Q${f - 12},${mir(t - 14)} ${f - 30},${mir(t - 12)} Q${f - 16},${mir(t - 3)} ${f - 16},${mir(t + 7)} Z`;
     const text = engrave ? `<text x="122" y="${m + 9}" font-family="Fraunces, serif" font-style="italic" font-size="9" fill="rgba(0,0,0,.45)" text-anchor="middle">${escapeHTML(engrave)}</text>` : '';
     const [ex, ey, er] = s.eye;
-    return `<svg viewBox="0 0 262 112" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de la jibionera">
+    return `<svg viewBox="0 0 262 112" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de la potera">
       <defs>
         <linearGradient id="${id}g" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="${back}"/><stop offset=".32" stop-color="${back}"/>
@@ -93,7 +93,6 @@
       <path d="${finBot}" fill="${back}" opacity=".9" stroke="rgba(0,0,0,.18)"/>
       <path d="${s.body}" fill="url(#${id}g)"/>
       <g clip-path="url(#${id}c)">
-        <rect width="262" height="112" fill="url(#${id}w)"/>
         ${pat}
         <path d="M${s.tail},${m} Q130,${m - 5} 224,${m - 1}" stroke="rgba(255,255,255,.3)" stroke-width="1.3" fill="none"/>
         <ellipse cx="130" cy="${t + 6}" rx="86" ry="5" fill="#fff" opacity=".22"/>
@@ -113,7 +112,7 @@
   }
 
   /* ------------------------------------------------------------
-     Catálogo · todas las jibioneras se hacen en todas las tallas
+     Catálogo · todas las poteras se hacen en todas las tallas
      (precios y pesos orientativos: cámbialos por los reales)
      ------------------------------------------------------------ */
   const SIZES = [
@@ -125,7 +124,7 @@
   const CATS = { calamar: 'Calamar', chipiron: 'Chipirón', sepia: 'Sepia' };
 
   const PRODUCTS = [
-    { id: 'rias', name: 'Jibionera Rías', cat: 'calamar', def: 4, sink: '3,5 s/m', stock: 12, badge: ['Más vendida', ''], serial: '037/150',
+    { id: 'rias', name: 'Potera Rías', cat: 'calamar', def: 4, sink: '3,5 s/m', stock: 12, badge: ['Más vendida', ''], serial: '037/150',
       lure: { shape: 'calamar', back: '#C2662D', body: '#F4D9B8', pattern: 'scales' }, bg: ['#12345E', '#0A1A2F'] },
     { id: 'chipi-noche', name: 'Chipi Noche', cat: 'chipiron', def: 1, sink: '4 s/m', stock: 4, badge: ['Nuevo', 'new'], serial: '012/100',
       lure: { shape: 'chipiron', back: '#0A1A2F', body: '#9CC9E6', pattern: 'none' }, bg: ['#1D5FA8', '#12345E'] },
@@ -217,7 +216,7 @@
       const clean = { kind: 'custom', shape: ref.shape, back: ref.back, body: ref.body, pattern: ref.pattern, size: k, engrave };
       return {
         ref: clean, key: 'custom:' + [clean.shape, clean.back, clean.body, clean.pattern, k, engrave].join('|'),
-        name: `Jibionera a medida (${NAMES[clean.shape]})`,
+        name: `Potera a medida (${NAMES[clean.shape]})`,
         meta: `${size.cm} cm${engrave ? ` · “${engrave}”` : ''}`,
         price: size.eur + CUSTOM_FEE + (engrave ? ENGRAVE_FEE : 0),
         lure: { shape: clean.shape, back: clean.back, body: clean.body, pattern: clean.pattern, engrave },
@@ -324,7 +323,7 @@
     }
     save(); renderCart();
     const c = $('#cartCount'); c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump');
-    toast('añadido al carrito', it.name);
+    toast('se ha añadido al carrito', it.name);
   }
 
   function renderCart() {
@@ -402,7 +401,7 @@
     const items = lines();
     const total = items.reduce((a, i) => a + i.qty * i.price, 0);
     const out = [
-      '🎣 *NUEVO PEDIDO — Peces artesanales Jordan Nito*',
+      '🎣 *NUEVO PEDIDO — Poteras artesanales Jordan Nito*',
       `🔖 *Ref.:* ${orderRef()}`,
       '',
       `👤 *Cliente:* ${name}`,

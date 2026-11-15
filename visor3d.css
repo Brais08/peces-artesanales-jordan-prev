@@ -1,0 +1,106 @@
+/* =========================================================
+   Recorrido 3D del taller (prueba)
+   La potera queda fija mientras los pasos pasan con el scroll.
+   ========================================================= */
+.story { display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: start; }
+.story__sticky { position: sticky; top: 14vh; height: 72vh; }
+
+.story__stage {
+  position: relative; height: 100%; border-radius: 24px; overflow: hidden;
+  background:
+    radial-gradient(60% 70% at 50% 40%, rgba(29,95,168,.55), transparent 70%),
+    radial-gradient(40% 30% at 50% 100%, rgba(255,194,26,.12), transparent 70%),
+    linear-gradient(180deg, #12345E, #0A1A2F);
+  border: 1px solid rgba(255,255,255,.1);
+  transition: background .8s;
+}
+.story__stage::before { /* rejilla técnica */
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5; transition: opacity .8s;
+  background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(closest-side, #000, transparent);
+  mask-image: radial-gradient(closest-side, #000, transparent);
+}
+/* Paso 4: el fondo pasa a "agua" */
+.story.is-water .story__stage { background: radial-gradient(70% 60% at 50% 0%, rgba(156,201,230,.35), transparent 70%), linear-gradient(180deg, #1D5FA8, #0A1A2F 85%); }
+.story.is-water .story__stage::before { opacity: 0; }
+.story__stage canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; display: block; outline: none; touch-action: pan-y; }
+.story.is-free .story__stage canvas { cursor: grab; }
+.story.is-free .story__stage canvas:active { cursor: grabbing; }
+
+.story__label {
+  position: absolute; top: 16px; left: 18px; z-index: 2; pointer-events: none;
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--foam);
+}
+.story__label b { color: var(--lure); }
+
+.viewer__loading {
+  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: .8rem;
+  font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; color: var(--foam); transition: opacity .5s;
+}
+.viewer__spin { width: 34px; height: 34px; border-radius: 50%; border: 2px solid rgba(255,255,255,.15); border-top-color: var(--lure); animation: viewerSpin 1s linear infinite; }
+@keyframes viewerSpin { to { transform: rotate(360deg); } }
+.story.is-ready .viewer__loading { opacity: 0; pointer-events: none; }
+
+/* Burbujas del paso 4 */
+.story__bubbles { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .6s; }
+.story.is-water .story__bubbles { opacity: 1; }
+.story__bubbles span { position: absolute; bottom: -12px; border-radius: 50%; border: 1px solid rgba(255,255,255,.45); background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.45), transparent 60%); animation: storyRise linear infinite; }
+@keyframes storyRise { to { transform: translate(var(--dx), -80vh); opacity: 0; } }
+
+/* Final: modo libre (girar y probar colores) */
+.viewer__hint {
+  position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%); z-index: 2; pointer-events: none;
+  padding: .4rem .8rem; border-radius: 999px; background: rgba(10,26,47,.6); backdrop-filter: blur(8px);
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: #fff;
+  white-space: nowrap; opacity: 0; transition: opacity .5s;
+}
+.story.is-free .viewer__hint { opacity: 1; }
+.story__stage.is-touched .viewer__hint { opacity: 0; }
+.viewer__colors {
+  position: absolute; left: 50%; bottom: 16px; transform: translate(-50%, 12px); z-index: 2;
+  display: flex; gap: .6rem; padding: .35rem .5rem; border-radius: 999px; background: rgba(10,26,47,.55); backdrop-filter: blur(8px);
+  opacity: 0; pointer-events: none; transition: opacity .5s, transform .5s var(--ease, ease);
+}
+.story.is-free .viewer__colors { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.viewer__color { width: 26px; height: 26px; border-radius: 50%; border: 3px solid var(--abyss); background: var(--c); box-shadow: 0 0 0 1px rgba(255,255,255,.25); transition: transform .2s, box-shadow .2s; }
+.viewer__color:hover { transform: scale(1.1); }
+.viewer__color.is-active { box-shadow: 0 0 0 2px var(--lure); }
+
+/* Pasos */
+.story__steps { list-style: none; margin: 0; padding: 0; }
+/* Margen final: la escena sigue fija un rato para poder girar la potera */
+.story__steps::after { content: ""; display: block; height: 45vh; }
+.story__step {
+  min-height: 78vh; display: flex; flex-direction: column; justify-content: center; gap: .9rem;
+  opacity: .28; transition: opacity .5s;
+}
+.story__step:first-child { min-height: 64vh; }
+.story__step:last-child { min-height: 72vh; }
+.story__step.is-active { opacity: 1; }
+.story__step h3 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+.story__step p { color: rgba(255,255,255,.75); margin: 0; font-size: 1.05rem; max-width: 420px; }
+.story__end { margin-top: .6rem !important; color: var(--lure) !important; }
+.story.is-rm .story__step { opacity: 1; }
+.story__end b { color: #fff; }
+
+/* Sin 3D (navegador sin WebGL): pasos normales e ilustración fija */
+.story.is-static { grid-template-columns: 1fr; }
+.story.is-static .story__sticky { position: relative; top: 0; height: auto; aspect-ratio: 16 / 7; }
+.story.is-static .story__steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+.story.is-static .story__step { min-height: 0; opacity: 1; }
+.story.is-static .story__steps::after { display: none; }
+.story.is-static .story__label, .story.is-static .story__end { display: none; }
+.viewer__fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: 8% 18%; }
+.viewer__fallback svg { width: 100%; filter: drop-shadow(0 26px 24px rgba(0,0,0,.45)); }
+
+/* Móvil: la escena arriba, los pasos pasan por debajo */
+@media (max-width: 900px) {
+  .story { grid-template-columns: 1fr; gap: 0; }
+  .story__sticky { top: 76px; height: 44vh; z-index: 2; padding-bottom: 12px; background: var(--abyss); }
+  .story__step { min-height: 62vh; justify-content: flex-start; padding-top: 6vh; }
+  .story__step:first-child { min-height: 52vh; }
+  .story__step:last-child { min-height: 50vh; }
+  .story__step p { font-size: 1rem; }
+  .story.is-static .story__sticky { aspect-ratio: 4 / 3; height: auto; }
+}
