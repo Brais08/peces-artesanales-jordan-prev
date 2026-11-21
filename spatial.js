@@ -4,7 +4,10 @@
   'use strict';
   const sec = document.getElementById('inicio');
   if (!sec || !window.JN) return;
-  const { lureSVG, PRODUCTS, SIZES, VARIANTS, priceFor, addToCart, openCart, eur, escapeHTML } = window.JN;
+  const { lureSVG, photoImg, PRODUCTS, SIZES, variantsOf, priceFor, addToCart, openCart, eur, escapeHTML } = window.JN;
+  window.JN.ready.then(() => { if (PRODUCTS.length) init(); });
+
+  function init() {
 
   const $ = (s, el = sec) => el.querySelector(s);
   const $$ = (s, el = sec) => [...el.querySelectorAll(s)];
@@ -13,7 +16,6 @@
   const ROLL_EASE = 'cubic-bezier(.2,.8,.2,1)';
   const SCAN_EASE = 'cubic-bezier(.65,0,.35,1)';
 
-  const variantsOf = p => VARIANTS[p.id] || [['Original', p.lure.back, p.lure.body]];
 
   const N = PRODUCTS.length, NC = N * 2; // dos copias para que el arco sea un bucle
   const arc = $('#spArc'), stage = $('#spStage');
@@ -28,7 +30,7 @@
     const el = document.createElement('div');
     el.className = 'sp__card glass';
     el.dataset.i = i;
-    el.innerHTML = `<div class="sp__g">${lureSVG(p.lure)}</div><span class="sp__cn">${escapeHTML(p.name)}</span><span class="sp__cp">${eur(priceFor(p, p.def))}</span><i class="sp__sheen"></i>`;
+    el.innerHTML = `<div class="sp__g">${p.photo ? photoImg(p.photo, p.name) : lureSVG(p.lure)}</div><span class="sp__cn">${escapeHTML(p.name)}</span><span class="sp__cp">${eur(priceFor(p, p.def))}</span><i class="sp__sheen"></i>`;
     if (!RM) el.addEventListener('pointerenter', () => { el.classList.remove('shine'); void el.offsetWidth; el.classList.add('shine'); });
     arc.appendChild(el);
     seeds.push(Math.random() * Math.PI * 2);
@@ -115,6 +117,8 @@
   }
 
   /* ---------- Escaneo sonar ---------- */
+  // Centro y miniatura: la foto si la hay; si no, la ilustración con el color elegido
+  const centerHTML = k => (PRODUCTS[k].photo ? photoImg(PRODUCTS[k].photo, PRODUCTS[k].name) : lureSVG(lureFor(k)));
   const lureFor = k => {
     const p = PRODUCTS[k], v = variantsOf(p)[colorIdx];
     return { ...p.lure, back: v[1], body: v[2] };
@@ -143,7 +147,7 @@
     updateBuy(true);
     updateTabs();
     updateSpecs();
-    scanTo(lureSVG(lureFor(k)));
+    scanTo(centerHTML(k));
   }
 
   /* ---------- Tarjeta de compra ---------- */
@@ -173,7 +177,7 @@
   const priceNow = () => priceFor(PRODUCTS[shown], sizeIdx);
 
   function updateThumb() {
-    bThumb.innerHTML = lureSVG(lureFor(shown));
+    bThumb.innerHTML = centerHTML(shown);
     if (!RM) bThumb.animate([{ transform: 'translateY(70%) scale(.8)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 650, easing: ROLL_EASE });
   }
 
@@ -201,7 +205,7 @@
     $$('button', bDots).forEach(x => x.classList.toggle('is-active', x === b));
     roll(bColor, `Color · ${variantsOf(PRODUCTS[shown])[colorIdx][0]}`);
     updateThumb();
-    scanTo(lureSVG(lureFor(shown))); // el sonar vuelve a "pintar" el señuelo
+    scanTo(centerHTML(shown)); // el sonar vuelve a "pintar" el señuelo
   });
 
   $('#bAdd').addEventListener('click', () => {
@@ -330,4 +334,5 @@
   sizeIdx = PRODUCTS[0].def;
   show(0);
   requestAnimationFrame(frame);
+  }
 })();

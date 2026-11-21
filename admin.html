@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://japugfszhiamhevfbacl.supabase.co; connect-src 'self' https://japugfszhiamhevfbacl.supabase.co; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; worker-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel · Poteras Jordan Nito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A1A2F'/%3E%3Cpath d='M10 32c8-12 30-14 44-6-4 4-4 8 0 12-14 8-36 6-44-6z' fill='%23FFC21A'/%3E%3Ccircle cx='44' cy='30' r='3' fill='%230A1A2F'/%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/" aria-label="Volver a la tienda">
+      <svg viewBox="0 0 64 40" aria-hidden="true"><path d="M4 20C14 6 40 4 56 14c-5 4-5 8 0 12C40 36 14 34 4 20Z" fill="currentColor"/><circle cx="46" cy="18" r="3" fill="#0A1A2F"/></svg>
+      <span><strong>Jordan Nito</strong><small>Panel de administración</small></span>
+    </a>
+    <div class="top__right" id="topRight" hidden>
+      <span class="who" id="who"></span>
+      <a class="btn btn--ghost" href="/" target="_blank" rel="noopener noreferrer">Ver la web ↗</a>
+      <button class="btn btn--ghost" id="logoutBtn" type="button">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Acceso -->
+    <section class="login" id="login" hidden>
+      <form class="login__card" id="loginForm" novalidate>
+        <h1>Acceso de administración</h1>
+        <p class="muted">Solo para la gestión del catálogo de la tienda.</p>
+        <label>Correo
+          <input type="email" id="email" autocomplete="username" maxlength="254" required>
+        </label>
+        <label>Contraseña
+          <input type="password" id="password" autocomplete="current-password" maxlength="128" required>
+        </label>
+        <button class="btn btn--yellow btn--block" id="loginBtn" type="submit">Entrar</button>
+        <p class="login__msg" id="loginMsg" role="alert"></p>
+      </form>
+    </section>
+
+    <!-- Catálogo -->
+    <section class="panel" id="panel" hidden>
+      <div class="toolbar">
+        <div>
+          <h1>Catálogo</h1>
+          <p class="muted" id="count"></p>
+        </div>
+        <div class="toolbar__actions">
+          <button class="btn btn--ghost-dark" id="exportBtn" type="button">Descargar copia</button>
+          <button class="btn btn--yellow" id="newBtn" type="button">+ Nueva potera</button>
+        </div>
+      </div>
+      <div class="list" id="list"><p class="empty">Cargando…</p></div>
+    </section>
+  </main>
+
+  <!-- Editor de ficha -->
+  <dialog class="editor" id="editor" aria-labelledby="editorTitle">
+    <form id="editForm" novalidate>
+      <header class="editor__head">
+        <h2 id="editorTitle">Nueva potera</h2>
+        <button type="button" class="icon-btn" id="closeEditor" aria-label="Cerrar">✕</button>
+      </header>
+
+      <div class="editor__body">
+        <div class="editor__side">
+          <div class="preview" id="preview"></div>
+          <div class="photo-actions">
+            <label class="btn btn--ghost-dark" for="photoInput">Elegir foto</label>
+            <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp" hidden>
+            <button type="button" class="btn btn--link" id="removePhoto">Quitar foto</button>
+          </div>
+          <p class="hint">JPG, PNG o WebP. Se reduce automáticamente antes de subirla. Queda mejor con fondo liso o transparente. Sin foto se muestra la ilustración.</p>
+        </div>
+
+        <div class="editor__fields">
+          <div class="grid2">
+            <label class="span2">Nombre *
+              <input type="text" name="name" maxlength="60" required>
+            </label>
+            <label>Especie *
+              <select name="cat">
+                <option value="calamar">Calamar</option>
+                <option value="chipiron">Chipirón</option>
+                <option value="sepia">Sepia</option>
+              </select>
+            </label>
+            <label>Talla por defecto
+              <select name="def_size"></select>
+            </label>
+            <label class="span2">Descripción <small><span id="descCount">0</span>/280</small>
+              <textarea name="description" rows="3" maxlength="280"></textarea>
+            </label>
+            <label>Recargo sobre el precio por talla (€)
+              <input type="number" name="extra" step="0.5" min="-20" max="200" value="0">
+            </label>
+            <label>Stock
+              <input type="number" name="stock" step="1" min="0" max="9999" value="0">
+            </label>
+            <label>Hundimiento
+              <input type="text" name="sink" maxlength="20" placeholder="Ej.: 3,5 s/m">
+            </label>
+            <label>Nº de serie
+              <input type="text" name="serial" maxlength="20" placeholder="Ej.: 037/150">
+            </label>
+            <label>Etiqueta
+              <input type="text" name="badge" maxlength="24" placeholder="Ej.: Nuevo">
+            </label>
+            <label>Color de la etiqueta
+              <select name="badge_style">
+                <option value="">Coral</option>
+                <option value="new">Amarillo</option>
+                <option value="limited">Azul</option>
+              </select>
+            </label>
+            <label class="check span2">
+              <input type="checkbox" name="visible" checked> Mostrar en la web
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>Ilustración (si no hay foto)</legend>
+            <div class="grid2">
+              <label>Forma
+                <select name="shape">
+                  <option value="calamar">Calamar</option>
+                  <option value="chipiron">Chipirón</option>
+                  <option value="sepia">Sepia</option>
+                </select>
+              </label>
+              <label>Patrón
+                <select name="pattern">
+                  <option value="scales">Escamas</option>
+                  <option value="stripes">Rayas</option>
+                  <option value="dots">Moteado</option>
+                  <option value="none">Liso</option>
+                </select>
+              </label>
+              <label>Color del lomo <input type="color" name="back" value="#c2662d"></label>
+              <label>Color del cuerpo <input type="color" name="body" value="#f4d9b8"></label>
+              <label>Fondo de la tarjeta (arriba) <input type="color" name="bg1" value="#12345e"></label>
+              <label>Fondo de la tarjeta (abajo) <input type="color" name="bg2" value="#0a1a2f"></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Colores que puede elegir el cliente <small>(máx. 6)</small></legend>
+            <div class="variants" id="variants"></div>
+            <button type="button" class="btn btn--link" id="addVariant">+ Añadir color</button>
+          </fieldset>
+        </div>
+      </div>
+
+      <footer class="editor__foot">
+        <p class="form-msg" id="formMsg" role="alert"></p>
+        <button type="button" class="btn btn--ghost-dark" id="cancelEdit">Cancelar</button>
+        <button type="submit" class="btn btn--yellow" id="saveBtn">Guardar</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="lure.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

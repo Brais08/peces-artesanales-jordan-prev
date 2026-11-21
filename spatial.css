@@ -220,3 +220,8 @@ body.in-hero .depth { opacity: 0; pointer-events: none; }
   .sp__opt { flex: none; }
   .sp__add { flex: 1 1 100%; height: 46px; justify-content: center; }
 }
+
+/* Fotos de producto en el escaparate (sin girar, centradas) */
+.sp__g .pimg { width: 100%; height: 100%; object-fit: contain; transform: none; }
+.sp__fig .pimg { width: 100%; height: 100%; object-fit: contain; }
+.sp__thumb .pimg { width: 100%; height: 100%; object-fit: contain; }

@@ -1,0 +1,6 @@
+# Archivos que NO se publican en la web
+.claude
+supabase
+.htaccess
+_headers
+*.md
